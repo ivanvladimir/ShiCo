@@ -62,7 +62,7 @@ def doSpaceEmbedding(monitor, results, aggMetadata):
 
     wordsT0 = None
     locsT0 = None
-    for label, r in results.iteritems():
+    for label, r in results.items():
         model = monitor._models[label]
         wordsT1 = [w for w, _ in r]
 

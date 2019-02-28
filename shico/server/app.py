@@ -16,7 +16,7 @@ Usage:
 from docopt import docopt
 
 from flask import Flask, current_app, jsonify
-from flask.ext.cors import CORS
+from flask_cors import CORS
 
 from shico.vocabularyaggregator import VocabularyAggregator
 from shico.vocabularyembedding import doSpaceEmbedding
@@ -76,8 +76,11 @@ def trackWord(terms):
     print "ResKeys", results.keys()
     print "AggResKeys", aggResults.keys()
     stream = yearTuplesAsDict(aggResults)
+    print("1>>>>>",stream)
     networks = yearlyNetwork(aggMetadata, aggResults, results, links)
+    print("2>>>>>",networks)
     embedded = doSpaceEmbedding(app.config['vm'], results, aggMetadata)
+    print("3>>>>>",embedded)
     return jsonify(stream=stream,
                    networks=networks,
                    embedded=embedded,

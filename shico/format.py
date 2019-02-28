@@ -17,10 +17,10 @@ def yearlyNetwork(aggPeriods, aggResults, results, links):
     '''Build a dictionary of network graph definitions. The key of this
     dictionary are the years and the values are the network definition
     (in the format used by D3).'''
-    seeds = {y: seedResp.keys() for y, seedResp in links.iteritems()}
+    seeds = {y: seedResp.keys() for y, seedResp in links.items()}
 
     networks = {}
-    for year_mu, years in aggPeriods.iteritems():
+    for year_mu, years in aggPeriods.items():
         yResults = {y: results[y] for y in years}
         yLinks = {y: links[y] for y in years}
         ySeeds = {y: seeds[y] for y in years}
@@ -47,7 +47,7 @@ def yearTuplesAsDict(results):
             }
         }
     '''
-    return {year: _tuplesAsDict(vals) for year, vals in results.iteritems()}
+    return {year: _tuplesAsDict(vals) for year, vals in results.items()}
 
 
 def _buildNode(word, counts, seedSet, finalWords):
